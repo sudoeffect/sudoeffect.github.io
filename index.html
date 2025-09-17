@@ -1,59 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio | Jr. Red Team Analyst</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Hello, I'm [Your Name]</h1>
-    <p>Jr. Red Team Analyst | Security Enthusiast | Pentester</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <!-- Header -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>Hello, I'm <span class="highlight">[Your Name]</span></h1>
+      <p>Jr. Red Team Analyst | Web Pentester | Security Enthusiast</p>
+      <a href="#projects" class="btn">View Projects</a>
+    </div>
   </header>
 
+  <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
-    <p>I’m passionate about offensive security, red teaming, and web application pentesting. Currently interning at Byte Capsule as a Jr. Red Team Analyst.</p>
+    <p>
+      I’m passionate about offensive security and red teaming. Currently interning at Byte Capsule as a Junior Red Team Analyst. I enjoy pentesting, OSINT, and automating security tasks.
+    </p>
   </section>
 
+  <!-- Skills Section -->
   <section id="skills">
     <h2>Skills</h2>
-    <ul>
+    <ul class="skills-grid">
       <li>Web App Pentesting (OWASP Top 10)</li>
       <li>OSINT & Reconnaissance</li>
-      <li>Burp Suite, Nmap, ffuf</li>
-      <li>Python, Bash, Linux (Kali)</li>
+      <li>Burp Suite & Nmap</li>
+      <li>Python & Bash</li>
+      <li>Linux (Kali/Parrot)</li>
+      <li>Git & Docker</li>
     </ul>
   </section>
 
+  <!-- Projects Section -->
   <section id="projects">
     <h2>Projects</h2>
-    <div class="project">
-      <h3>Bug Hunting Reports</h3>
-      <p>Documented security vulnerabilities in lab apps with PoC and remediation.</p>
-    </div>
-    <div class="project">
-      <h3>Automation Scripts</h3>
-      <p>Python/Bash scripts for reconnaissance and scanning tasks.</p>
+    <div class="projects-grid">
+      <div class="card">
+        <h3>Bug Hunting Reports</h3>
+        <p>Documented vulnerabilities in lab apps with PoC and remediation.</p>
+      </div>
+      <div class="card">
+        <h3>Automation Scripts</h3>
+        <p>Python/Bash scripts for reconnaissance and scanning tasks.</p>
+      </div>
+      <div class="card">
+        <h3>Portfolio Website</h3>
+        <p>This website itself, hosted on GitHub Pages with HTML, CSS, and JS.</p>
+      </div>
     </div>
   </section>
 
+  <!-- Contact Section -->
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:yourname@email.com">yourname@email.com</a></p>
+    <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
     <p>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></p>
     <p>LinkedIn: <a href="https://linkedin.com/in/yourusername">linkedin.com/in/yourusername</a></p>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Your Name</p>
+    <p>© 2025 [Your Name] | Built with ❤️ & GitHub Pages</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
