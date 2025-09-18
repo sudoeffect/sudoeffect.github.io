@@ -21,7 +21,7 @@ window.addEventListener('scroll', () => {
 hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('nav-active');
     hamburger.classList.toggle('active');
-    document.body.classList.toggle('no-scroll');
+    document.body.classList.toggle('no-scroll'); // Prevent body scrolling when menu is open
 });
 
 // Close mobile menu when clicking on a link
@@ -39,6 +39,7 @@ navLinksItems.forEach(item => {
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('light-theme');
 
+    // Toggle icons
     if (document.body.classList.contains('light-theme')) {
         moonIcon.style.display = 'none';
         sunIcon.style.display = 'block';
@@ -47,6 +48,7 @@ themeToggle.addEventListener('click', () => {
         sunIcon.style.display = 'none';
     }
 
+    // Save theme preference to localStorage
     const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
     localStorage.setItem('theme', theme);
 });
@@ -54,28 +56,34 @@ themeToggle.addEventListener('click', () => {
 // Load saved theme preference
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
+
     if (savedTheme === 'light') {
         document.body.classList.add('light-theme');
         moonIcon.style.display = 'none';
         sunIcon.style.display = 'block';
     }
 
-    // Section animations
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('section-animate');
-                }
-            });
-        }, { threshold: 0.1 });
+    // Add animations with delay for elements
+    const animateElements = () => {
+        const sections = document.querySelectorAll('section');
 
-        observer.observe(section);
-    });
+        sections.forEach(section => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-animate');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(section);
+        });
+    };
+
+    animateElements();
 });
 
-// Contact form submission
+// Handle contact form submission
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -85,11 +93,25 @@ if (contactForm) {
         const subject = document.getElementById('subject').value;
         const message = document.getElementById('message').value;
 
+        // Simple form validation
         if (!name || !email || !subject || !message) {
             alert('Please fill out all fields');
             return;
         }
 
+        // Here you would normally send the form data to a server
+        // For this demo, we'll just show a success message
+
+        const formData = {
+            name,
+            email,
+            subject,
+            message
+        };
+
+        console.log('Form submitted:', formData);
+
+        // Show success message
         const successMessage = document.createElement('div');
         successMessage.className = 'success-message';
         successMessage.innerHTML = `
@@ -97,28 +119,31 @@ if (contactForm) {
             <p>Thank you for your message, ${name}! I'll get back to you soon.</p>
         `;
 
+        // Replace form with success message
         contactForm.innerHTML = '';
         contactForm.appendChild(successMessage);
     });
 }
 
-// Smooth scrolling
+// Add smooth scrolling to all links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
+
         const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+        if (targetId === '#') return; // Skip if href is just "#"
+
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
             window.scrollTo({
-                top: targetElement.offsetTop - 80,
+                top: targetElement.offsetTop - 80, // Adjust for header height
                 behavior: 'smooth'
             });
         }
     });
 });
 
-// Binary typing effect
+// Add typing effect to the binary in hero section
 const binaryElement = document.querySelector('.binary');
 if (binaryElement) {
     const originalText = binaryElement.innerText;
@@ -133,5 +158,6 @@ if (binaryElement) {
         }
     };
 
+    // Start typing effect when page loads
     setTimeout(typeWriter, 1000);
 }
